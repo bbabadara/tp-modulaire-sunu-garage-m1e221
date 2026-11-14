@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import sn.sunugarage.facturation.FacturationApi;
 import sn.sunugarage.facturation.FactureDto;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,6 +21,11 @@ public class FacturationController {
 
     public FacturationController(FacturationApi facturation) {
         this.facturation = facturation;
+    }
+
+    @GetMapping("/factures")
+    public List<FactureDto> factures() {
+        return facturation.factures();
     }
 
     @GetMapping("/factures/{id}")

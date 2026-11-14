@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import sn.sunugarage.facturation.internal.domain.Facture;
 import sn.sunugarage.facturation.internal.domain.Factures;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,5 +30,10 @@ public class InMemoryFactures implements Factures {
     @Override
     public Optional<Facture> findByOrdreId(UUID ordreId) {
         return Optional.ofNullable(parOrdre.get(ordreId)).map(parId::get);
+    }
+
+    @Override
+    public List<Facture> findAll() {
+        return List.copyOf(parId.values());
     }
 }

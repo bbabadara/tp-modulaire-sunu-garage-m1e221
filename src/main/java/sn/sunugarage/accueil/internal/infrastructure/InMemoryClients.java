@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import sn.sunugarage.accueil.internal.domain.Client;
 import sn.sunugarage.accueil.internal.domain.Clients;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,5 +23,10 @@ public class InMemoryClients implements Clients {
     @Override
     public Optional<Client> findById(UUID clientId) {
         return Optional.ofNullable(parId.get(clientId));
+    }
+
+    @Override
+    public List<Client> findAll() {
+        return List.copyOf(parId.values());
     }
 }

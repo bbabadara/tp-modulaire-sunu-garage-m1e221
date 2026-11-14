@@ -96,6 +96,8 @@ OpenAPI JSON : [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-
 
 Les endpoints sont groupés par module (`accueil`, `stock`, `atelier`, `facturation`).
 
+Au démarrage, un jeu de démonstration est chargé (`sunugarage.donnees-demarrage=true`) : 4 clients, 5 références de stock, un ordre ouvert, une facture payée et une facture impayée. Consulter `GET /api/accueil/clients`, `GET /api/stock/pieces`, `GET /api/atelier/ordres` et `GET /api/facturation/factures`.
+
 ## Scénario de bout en bout
 
 Déroulé vérifié par `ScenarioE2ETest` :
@@ -113,10 +115,13 @@ Déroulé vérifié par `ScenarioE2ETest` :
 | Méthode | Chemin | Rôle |
 |---|---|---|
 | POST | `/api/accueil/clients` | Enregistrer un client |
+| GET | `/api/accueil/clients` | Lister les clients |
 | GET | `/api/accueil/clients/{id}` | Consulter un client |
 | POST | `/api/accueil/vehicules` | Enregistrer un véhicule |
+| GET | `/api/accueil/vehicules` | Lister les véhicules |
 | GET | `/api/accueil/vehicules/{id}` | Consulter un véhicule et son statut |
 | POST | `/api/stock/pieces` | Ajouter des pièces |
+| GET | `/api/stock/pieces` | Lister les pièces |
 | GET | `/api/stock/pieces/{reference}` | Consulter une pièce |
 | GET | `/api/stock/pieces/{reference}/disponible` | Quantité disponible |
 | GET | `/api/stock/alertes` | Pièces sous le seuil |
@@ -124,7 +129,9 @@ Déroulé vérifié par `ScenarioE2ETest` :
 | POST | `/api/atelier/ordres/{id}/main-oeuvre` | Ajouter de la main-d'œuvre |
 | POST | `/api/atelier/ordres/{id}/pieces` | Ajouter une pièce |
 | POST | `/api/atelier/ordres/{id}/cloture` | Clôturer l'ordre |
+| GET | `/api/atelier/ordres` | Lister les ordres |
 | GET | `/api/atelier/ordres/{id}` | Consulter un ordre |
+| GET | `/api/facturation/factures` | Lister les factures |
 | GET | `/api/facturation/ordres/{ordreId}/facture` | Facture d'un ordre |
 | POST | `/api/facturation/factures/{id}/paiement` | Payer une facture |
 

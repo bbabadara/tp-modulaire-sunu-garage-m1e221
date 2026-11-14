@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import sn.sunugarage.accueil.internal.domain.Vehicule;
 import sn.sunugarage.accueil.internal.domain.Vehicules;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -29,5 +30,10 @@ public class InMemoryVehicules implements Vehicules {
     @Override
     public Optional<Vehicule> findByImmatriculation(String immatriculation) {
         return Optional.ofNullable(parImmatriculation.get(immatriculation)).map(parId::get);
+    }
+
+    @Override
+    public List<Vehicule> findAll() {
+        return List.copyOf(parId.values());
     }
 }

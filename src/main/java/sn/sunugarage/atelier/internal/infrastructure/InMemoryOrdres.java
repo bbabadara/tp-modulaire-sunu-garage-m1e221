@@ -5,6 +5,7 @@ import sn.sunugarage.atelier.internal.domain.OrdreReparation;
 import sn.sunugarage.atelier.internal.domain.Ordres;
 import sn.sunugarage.atelier.internal.domain.StatutOrdre;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -31,5 +32,10 @@ public class InMemoryOrdres implements Ordres {
                 .filter(ordre -> ordre.vehiculeId().equals(vehiculeId))
                 .filter(ordre -> ordre.statut() == StatutOrdre.OUVERT)
                 .findFirst();
+    }
+
+    @Override
+    public List<OrdreReparation> findAll() {
+        return List.copyOf(parId.values());
     }
 }

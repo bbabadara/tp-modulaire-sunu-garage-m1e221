@@ -15,6 +15,7 @@ import sn.sunugarage.accueil.internal.domain.Clients;
 import sn.sunugarage.accueil.internal.domain.Vehicule;
 import sn.sunugarage.accueil.internal.domain.Vehicules;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -73,6 +74,16 @@ public class AccueilService implements AccueilApi {
         return vehicules.findById(vehiculeId)
                 .map(this::versDto)
                 .orElseThrow(() -> new VehiculeIntrouvableException(vehiculeId));
+    }
+
+    @Override
+    public List<ClientDto> clients() {
+        return clients.findAll().stream().map(this::versDto).toList();
+    }
+
+    @Override
+    public List<VehiculeDto> vehicules() {
+        return vehicules.findAll().stream().map(this::versDto).toList();
     }
 
     @Override

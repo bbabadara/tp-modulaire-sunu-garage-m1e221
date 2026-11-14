@@ -1,5 +1,6 @@
 package sn.sunugarage.accueil;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface AccueilApi {
@@ -13,6 +14,10 @@ public interface AccueilApi {
     ClientDto client(UUID clientId);
 
     VehiculeDto vehicule(UUID vehiculeId);
+
+    List<ClientDto> clients();
+
+    List<VehiculeDto> vehicules();
 
     void marquerSortable(UUID vehiculeId);
 }

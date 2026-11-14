@@ -20,8 +20,10 @@ import sn.sunugarage.facturation.FactureRequest;
 import sn.sunugarage.facturation.LignePieceFacture;
 import sn.sunugarage.stock.PieceSortieDto;
 import sn.sunugarage.stock.StockApi;
+import sn.sunugarage.stock.internal.domain.Piece;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -102,6 +104,11 @@ public class AtelierService implements AtelierApi {
     @Override
     public OrdreDto ordre(UUID ordreId) {
         return versDto(trouver(ordreId));
+    }
+
+    @Override
+    public List<OrdreDto> ordres() {
+        return ordres.findAll().stream().map(this::versDto).toList();
     }
 
     @Override

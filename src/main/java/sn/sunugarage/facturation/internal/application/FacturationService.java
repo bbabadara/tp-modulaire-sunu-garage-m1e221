@@ -12,6 +12,7 @@ import sn.sunugarage.facturation.FactureRequest;
 import sn.sunugarage.facturation.internal.domain.Facture;
 import sn.sunugarage.facturation.internal.domain.Factures;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -68,6 +69,11 @@ public class FacturationService implements FacturationApi {
         return factures.findByOrdreId(ordreId)
                 .map(this::versDto)
                 .orElseThrow(() -> new FactureIntrouvableException("Aucune facture pour l'ordre " + ordreId));
+    }
+
+    @Override
+    public List<FactureDto> factures() {
+        return factures.findAll().stream().map(this::versDto).toList();
     }
 
     private Facture trouver(UUID factureId) {

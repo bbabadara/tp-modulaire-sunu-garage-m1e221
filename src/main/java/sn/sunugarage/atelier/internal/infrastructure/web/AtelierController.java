@@ -13,6 +13,7 @@ import sn.sunugarage.atelier.AtelierApi;
 import sn.sunugarage.atelier.OrdreDto;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -53,6 +54,11 @@ public class AtelierController {
     public OrdreDto cloturer(@PathVariable UUID id) {
         atelier.cloturer(id);
         return atelier.ordre(id);
+    }
+
+    @GetMapping("/ordres")
+    public List<OrdreDto> ordres() {
+        return atelier.ordres();
     }
 
     @GetMapping("/ordres/{id}")

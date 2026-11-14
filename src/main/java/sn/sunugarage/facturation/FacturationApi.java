@@ -1,5 +1,6 @@
 package sn.sunugarage.facturation;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface FacturationApi {
@@ -11,4 +12,6 @@ public interface FacturationApi {
     FactureDto facture(UUID factureId);
 
     FactureDto factureDe(UUID ordreId);
+
+    List<FactureDto> factures();
 }

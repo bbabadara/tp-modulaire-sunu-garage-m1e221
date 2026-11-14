@@ -37,6 +37,11 @@ public class StockController {
         return stock.piece(requete.reference());
     }
 
+    @GetMapping("/pieces")
+    public List<PieceDto> pieces() {
+        return stock.pieces();
+    }
+
     @GetMapping("/pieces/{reference}")
     public PieceDto piece(@PathVariable String reference) {
         return stock.piece(reference);

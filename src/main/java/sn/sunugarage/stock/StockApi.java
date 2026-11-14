@@ -12,5 +12,7 @@ public interface StockApi {
 
     PieceSortieDto sortirPiece(String reference, int quantite);
 
+    List<PieceDto> pieces();
+
     List<PieceDto> piecesSousSeuil();
 }

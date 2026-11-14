@@ -71,6 +71,11 @@ public class StockService implements StockApi {
     }
 
     @Override
+    public List<PieceDto> pieces() {
+        return pieces.findAll().stream().map(this::versDto).toList();
+    }
+
+    @Override
     public List<PieceDto> piecesSousSeuil() {
         return pieces.findAll().stream()
                 .filter(Piece::sousSeuil)

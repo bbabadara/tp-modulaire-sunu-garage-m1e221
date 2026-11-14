@@ -13,6 +13,7 @@ import sn.sunugarage.accueil.AccueilApi;
 import sn.sunugarage.accueil.ClientDto;
 import sn.sunugarage.accueil.VehiculeDto;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -33,6 +34,11 @@ public class AccueilController {
         return accueil.client(clientId);
     }
 
+    @GetMapping("/clients")
+    public List<ClientDto> clients() {
+        return accueil.clients();
+    }
+
     @GetMapping("/clients/{id}")
     public ClientDto client(@PathVariable UUID id) {
         return accueil.client(id);
@@ -43,6 +49,11 @@ public class AccueilController {
     public VehiculeDto creerVehicule(@RequestBody CreerVehiculeRequest requete) {
         UUID vehiculeId = accueil.enregistrerVehicule(requete.immatriculation(), requete.clientId());
         return accueil.vehicule(vehiculeId);
+    }
+
+    @GetMapping("/vehicules")
+    public List<VehiculeDto> vehicules() {
+        return accueil.vehicules();
     }
 
     @GetMapping("/vehicules/{id}")
