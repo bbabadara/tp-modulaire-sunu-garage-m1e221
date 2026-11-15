@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import sn.sunugarage.stock.PieceDto;
 import sn.sunugarage.stock.StockApi;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/stock")
+@Tag(name = "Stock", description = "Pièces, quantités, prix et alertes de seuil")
 public class StockController {
 
     private final StockApi stock;

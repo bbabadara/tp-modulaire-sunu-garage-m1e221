@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import sn.sunugarage.accueil.AccueilApi;
 import sn.sunugarage.accueil.ClientDto;
 import sn.sunugarage.accueil.VehiculeDto;
@@ -16,6 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/accueil")
+@Tag(name = "Accueil", description = "Clients, véhicules et statut de sortie")
 public class AccueilController {
 
     private final AccueilApi accueil;

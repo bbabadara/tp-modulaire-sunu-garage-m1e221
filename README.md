@@ -91,6 +91,11 @@ mvn -Dtest=ScenarioE2ETest test
 mvn spring-boot:run
 ```
 
+Swagger UI : [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)  
+OpenAPI JSON : [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+Les endpoints sont groupés par module (`accueil`, `stock`, `atelier`, `facturation`).
+
 ## Scénario de bout en bout
 
 Déroulé vérifié par `ScenarioE2ETest` :

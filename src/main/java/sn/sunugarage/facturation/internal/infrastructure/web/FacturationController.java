@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import sn.sunugarage.facturation.FacturationApi;
 import sn.sunugarage.facturation.FactureDto;
 
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/facturation")
+@Tag(name = "Facturation", description = "Émission et paiement des factures")
 public class FacturationController {
 
     private final FacturationApi facturation;
