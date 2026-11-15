@@ -118,10 +118,6 @@ public class AtelierService implements AtelierApi {
                 .orElseThrow(() -> new OrdreIntrouvableException(ordreId));
     }
 
-    String violationVolontaireDeFrontiere() {
-        return sn.sunugarage.stock.internal.domain.Piece.class.getName();
-    }
-
     private OrdreDto versDto(OrdreReparation ordre) {
         return new OrdreDto(
                 ordre.id(),
