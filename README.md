@@ -125,11 +125,38 @@ Déroulé vérifié par `ScenarioE2ETest` :
 
 ## Étape 3 — casser une frontière
 
-> À compléter au lot 7 : violation volontaire, message d'erreur de `ModulesTest`, correction.
+### La violation volontaire
+
+Dans `AtelierService`, on a ajouté une méthode qui référence directement une classe
+**interne** du module Stock (`sn.sunugarage.stock.internal.domain.Piece`) :
+
+```java
+String violationVolontaireDeFrontiere() {
+    return sn.sunugarage.stock.internal.domain.Piece.class.getName();
+}
+```
+
+L'application **compile** (`mvn -DskipTests compile` passe), mais `ModulesTest` échoue.
+
+### Message d'erreur de ModulesTest
+
+Commande : `mvn -Dtest=ModulesTest test`
 
 ```text
-(le message d'erreur de ModulesTest sera collé ici)
+org.springframework.modulith.core.Violations: - Module 'atelier' depends on module 'stock' via sn.sunugarage.atelier.internal.application.AtelierService -> sn.sunugarage.stock.internal.domain.Piece. Allowed targets: accueil, stock, facturation.
+	at org.springframework.modulith.core.Violations.and(Violations.java:141)
+	at org.springframework.modulith.core.ApplicationModules.detectViolations(ApplicationModules.java:505)
+	at org.springframework.modulith.core.ApplicationModules.verify(ApplicationModules.java:459)
+	at org.springframework.modulith.core.ApplicationModules.verify(ApplicationModules.java:443)
+	at sn.sunugarage.ModulesTest.verifieLesFrontieresDesModules(ModulesTest.java:12)
 ```
+
+### La correction
+
+On supprime l'accès direct à `stock.internal`. La bonne façon de faire est de passer par
+l'**API publique** du module Stock (`StockApi.sortirPiece` / `StockApi.disponible`), qui
+encapsule la règle métier et ne laisse sortir qu'un DTO (`PieceSortieDto`). L'intérieur
+du module Stock reste invisible depuis Atelier, et `ModulesTest` repasse au vert.
 
 ## Versionnement
 
