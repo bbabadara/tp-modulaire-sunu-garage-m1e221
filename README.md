@@ -158,6 +158,15 @@ l'**API publique** du module Stock (`StockApi.sortirPiece` / `StockApi.disponibl
 encapsule la règle métier et ne laisse sortir qu'un DTO (`PieceSortieDto`). L'intérieur
 du module Stock reste invisible depuis Atelier, et `ModulesTest` repasse au vert.
 
+## Démonstration (5 minutes)
+
+1. **Le découpage** : montrer `DECOUPAGE.md`, les 4 modules et le schéma acyclique.
+2. **Le scénario qui passe** : `mvn -Dtest=ScenarioE2ETest test`, puis montrer les
+   assertions (stock 4 → 2, facture 50 000 XOF, véhicule `PEUT_SORTIR`).
+3. **La violation** : montrer la branche `demo/frontiere-cassee` (commits
+   `test(demo): viole volontairement...` puis `fix(atelier): respecte la frontiere...`)
+   et le message d'erreur de `ModulesTest` ci-dessus.
+
 ## Versionnement
 
 - `main` : livrable stable, tags `v0.1.0`, `v0.2.0`, `v0.3.0`, `v1.0.0`.
